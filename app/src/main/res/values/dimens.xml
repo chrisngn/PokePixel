@@ -3,5 +3,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="tile_button_width">40dp</dimen>
+    <dimen name="activity_horizontal_margin_2x">32dp</dimen>
+    <dimen name="activity_vertical_margin_2x">32dp</dimen>
+
+    <dimen name="tile_spacing">5dp</dimen>
+
+    <dimen name="menu_button_padding">16dp</dimen>
+    <dimen name="menu_button_margin">2dp</dimen>
 </resources>

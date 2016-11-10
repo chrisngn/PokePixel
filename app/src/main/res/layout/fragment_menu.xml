@@ -1,0 +1,83 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_game_theme"
+    tools:context=".fragments.MenuFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin_2x"
+            android:text="Poke Pixel"
+            android:textColor="@android:color/white"
+            android:textSize="50dp" />
+
+        <LinearLayout
+            android:id="@+id/button_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/beginner"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/menu_button_margin"
+                android:layout_marginTop="@dimen/menu_button_margin"
+                android:background="@drawable/ripple"
+                android:paddingLeft="@dimen/menu_button_padding"
+                android:paddingRight="@dimen/menu_button_padding"
+                android:text="Beginner"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/intermediate"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/menu_button_margin"
+                android:layout_marginTop="@dimen/menu_button_margin"
+                android:background="@drawable/ripple"
+                android:paddingLeft="@dimen/menu_button_padding"
+                android:paddingRight="@dimen/menu_button_padding"
+                android:text="Intermediate"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/advanced"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/menu_button_margin"
+                android:layout_marginTop="@dimen/menu_button_margin"
+                android:background="@drawable/ripple"
+                android:paddingLeft="@dimen/menu_button_padding"
+                android:paddingRight="@dimen/menu_button_padding"
+                android:text="Advanced"
+                android:textAllCaps="false" />
+            <!--<Button-->
+            <!--android:id="@+id/master"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="?attr/selectableItemBackground"-->
+            <!--android:text="Master"-->
+            <!--android:textAllCaps="false" />-->
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
