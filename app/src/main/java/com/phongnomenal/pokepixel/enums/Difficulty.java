@@ -5,8 +5,7 @@ package com.phongnomenal.pokepixel.enums;
  */
 
 public enum Difficulty {
-    BEGINNER,
-    INTERMEDIATE,
-    ADVANCED,
-    MASTER
+    BLIND,
+    IMPAIRED,
+    TWENTY_TWENTY
 }

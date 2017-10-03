@@ -94,7 +94,7 @@
             android:gravity="center"
             android:paddingLeft="@dimen/menu_button_padding"
             android:paddingRight="@dimen/menu_button_padding"
-            android:text="Restart"
+            android:text="@string/quit"
             android:textAllCaps="false" />
     </LinearLayout>
 </RelativeLayout>

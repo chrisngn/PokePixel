@@ -13,9 +13,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin_2x"
-            android:text="Poke Pixel"
+            android:layout_marginTop="@dimen/menu_margin"
+            android:text="@string/app_name"
             android:textColor="@android:color/white"
             android:textSize="50dp" />
 
@@ -38,7 +39,7 @@
                 android:background="@drawable/ripple"
                 android:paddingLeft="@dimen/menu_button_padding"
                 android:paddingRight="@dimen/menu_button_padding"
-                android:text="Beginner"
+                android:text="@string/blind"
                 android:textAllCaps="false" />
 
             <Button
@@ -52,7 +53,7 @@
                 android:background="@drawable/ripple"
                 android:paddingLeft="@dimen/menu_button_padding"
                 android:paddingRight="@dimen/menu_button_padding"
-                android:text="Intermediate"
+                android:text="@string/impaired"
                 android:textAllCaps="false" />
 
             <Button
@@ -66,17 +67,21 @@
                 android:background="@drawable/ripple"
                 android:paddingLeft="@dimen/menu_button_padding"
                 android:paddingRight="@dimen/menu_button_padding"
-                android:text="Advanced"
+                android:text="@string/twenty_twenty"
                 android:textAllCaps="false" />
-            <!--<Button-->
-            <!--android:id="@+id/master"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:background="?attr/selectableItemBackground"-->
-            <!--android:text="Master"-->
-            <!--android:textAllCaps="false" />-->
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/select_blindness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/menu_margin"
+            android:layout_below="@id/button_container"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:text="@string/select_vision" />
 
     </RelativeLayout>
 

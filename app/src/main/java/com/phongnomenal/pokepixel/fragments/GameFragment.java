@@ -1,8 +1,10 @@
 package com.phongnomenal.pokepixel.fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,13 +35,13 @@ public class GameFragment extends Fragment {
     private View mFragment;
     private GridView mGameGrid;
     private TextView mTimer, mScore, mClicks;
-    private Button mButton;
+    private Button mQuit;
 
     private Handler handler;
     private Runnable runnable;
 
     private int mScoreCounter, mClickCounter;
-    private int mCols = 2;
+    private int mCols = 2; // initial # of columns
 
     public GameFragment() {
         // Required empty public constructor
@@ -68,8 +70,8 @@ public class GameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mScore = (TextView) mFragment.findViewById(R.id.score);
         mClicks = (TextView) mFragment.findViewById(R.id.clicks);
-        mButton = (Button) mFragment.findViewById(R.id.quit);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mQuit = (Button) mFragment.findViewById(R.id.quit);
+        mQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stopGame();
@@ -86,17 +88,20 @@ public class GameFragment extends Fragment {
 
     private void initGame(int size) {
         setupGrid(size);
-        switch(difficulty) {
-            case BEGINNER:
-                setupTimer(60);
-                break;
-            case INTERMEDIATE:
-                setupTimer(50);
-                break;
-            case ADVANCED:
-                setupTimer(40);
-                break;
-        }
+        setupTimer(60);
+
+        // Idea: Reduced time for higher difficulties
+//        switch(difficulty) {
+//            case BLIND:
+//                setupTimer(60);
+//                break;
+//            case IMPAIRED:
+//                setupTimer(60);
+//                break;
+//            case TWENTY_TWENTY:
+//                setupTimer(30);
+//                break;
+//        }
     }
 
     private void setupGrid(int n) {
@@ -114,6 +119,9 @@ public class GameFragment extends Fragment {
             //Set<Integer> answers = randomAnswers;
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Vibrator vb = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                vb.vibrate(100);
+
                 if (randomAnswers.contains(position)) {
                     randomAnswers.remove(position);
                     if (randomAnswers.size() == 0) {
@@ -129,6 +137,8 @@ public class GameFragment extends Fragment {
 
     private void setupTimer(final int secs) {
         mTimer = (TextView) getActivity().findViewById(R.id.timer);
+        mTimer.setTextColor(Color.GREEN);
+
         handler = new Handler();
         runnable = new Runnable() {
             int t = secs;
@@ -139,8 +149,6 @@ public class GameFragment extends Fragment {
                     mTimer.setTextColor(Color.RED);
                 } else if (t < 20) {
                     mTimer.setTextColor(Color.YELLOW);
-                } else {
-                    mTimer.setTextColor(Color.GREEN);
                 }
                 if (t == -1) {
                     stopGame();
@@ -168,7 +176,7 @@ public class GameFragment extends Fragment {
     private HashSet<Integer> generateRandomAnswers() {
         Random random = new Random();
         HashSet<Integer> s = new HashSet<>();
-        int n = GameFragment.difficulty == Difficulty.ADVANCED ? 2 : 1;
+        int n = GameFragment.difficulty == Difficulty.BLIND ? 2 : 1;
         while (n > 0) {
             int r = random.nextInt(mCols * mCols);
             if (!s.contains(r)) {

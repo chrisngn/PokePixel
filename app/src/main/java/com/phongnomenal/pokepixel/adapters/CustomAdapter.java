@@ -22,9 +22,16 @@ import java.util.Random;
  */
 
 public class CustomAdapter extends BaseAdapter {
+    // BLIND, IMPAIRED
+    private static final double IMPAIRED_MIN_TINT = 0.1;
+    private static final double IMPAIRED_MAX_TINT = 0.2;
+    private static final double IMPAIRED_MIN_SHADE = 0.8;
+    private static final double IMPAIRED_MAX_SHADE = 0.9;
+
+    // TWENTY_TWENTY
     private static final double MIN_TINT = 0.1;
-    private static final double MAX_TINT = 0.2;
-    private static final double MIN_SHADE = 0.8;
+    private static final double MAX_TINT = 0.15;
+    private static final double MIN_SHADE = 0.85;
     private static final double MAX_SHADE = 0.9;
 
     private static Random random;
@@ -109,7 +116,7 @@ public class CustomAdapter extends BaseAdapter {
         double factor = getHueFactor();
         Log.d("factor", String.valueOf(factor));
 
-        if (0.05 <= factor && factor <= 0.2) {
+        if (MIN_TINT <= factor && factor <= MAX_TINT) {
             int tint = getTint(factor);
             Log.d("tint", String.valueOf(tint));
             return tint;
@@ -149,14 +156,37 @@ public class CustomAdapter extends BaseAdapter {
     }
 
     /**
-     * Return the factor that will produce a tint or shade that is not too different from the original
+     * Return the factor that will produce a tint or shade
+     * that is not too different from the original
      *
      * @return the factor
      */
     private double getHueFactor() {
         double f = random.nextDouble();
+        double minTint = 0;
+        double maxTint = 0;
+        double minShade = 0;
+        double maxShade = 0;
+
+        switch (fragment.difficulty) {
+            case BLIND:
+                // same color difficult as IMPAIRED
+            case IMPAIRED:
+                minTint = IMPAIRED_MIN_TINT;
+                maxTint = IMPAIRED_MAX_TINT;
+                minShade = IMPAIRED_MIN_SHADE;
+                maxShade = IMPAIRED_MAX_SHADE;
+                break;
+            case TWENTY_TWENTY:
+                minTint = MIN_TINT;
+                maxTint = MAX_TINT;
+                minShade = MIN_SHADE;
+                maxShade = MAX_SHADE;
+                break;
+        }
+
         while (true) {
-            if ((MIN_TINT <= f && f <= MAX_TINT) || (MIN_SHADE <= f && f <= MAX_SHADE)) {
+            if ((minTint <= f && f <= maxTint) || (minShade <= f && f <= maxShade)) {
                 return f;
             }
             f = random.nextDouble();

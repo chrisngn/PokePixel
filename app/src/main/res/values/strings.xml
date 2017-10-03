@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Poke Pixel</string>
+
+    <!--Difficulties-->
+    <string name="blind">Blind</string>
+    <string name="impaired">Impaired</string>
+    <string name="twenty_twenty">Twenty Twenty</string>
+
+    <string name="quit">Quit!</string>
+    <string name="select_vision">Select vision level!</string>
 </resources>

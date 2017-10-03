@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Launch the game menu
-        FragmentLauncher.launchFragment(this, MenuFragment.newInstance(), R.id.fragment_container, false);
+        FragmentLauncher.launchFragment(this, MenuFragment.newInstance(),
+                R.id.fragment_container, false);
     }
 }

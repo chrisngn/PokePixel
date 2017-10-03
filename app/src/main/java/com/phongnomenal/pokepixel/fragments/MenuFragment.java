@@ -5,7 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.phongnomenal.pokepixel.common.FragmentLauncher;
 import com.phongnomenal.pokepixel.R;
@@ -13,9 +16,9 @@ import com.phongnomenal.pokepixel.activities.MainActivity;
 import com.phongnomenal.pokepixel.enums.Difficulty;
 
 public class MenuFragment extends Fragment {
-    public static Difficulty difficulty;
     private MainActivity mainActivity;
-    private Button beginner, intermediate, advanced, master;
+    private Button blind, impaired, twentyTwenty;
+    private TextView selectBlindness;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -34,15 +37,24 @@ public class MenuFragment extends Fragment {
 
         mainActivity = (MainActivity) getActivity();
 
-        beginner = (Button) view.findViewById(R.id.beginner);
-        intermediate = (Button) view.findViewById(R.id.intermediate);
-        advanced = (Button) view.findViewById(R.id.advanced);
-        //master = (Button) view.findViewById(R.id.master);
+        selectBlindness = (TextView) view.findViewById(R.id.select_blindness);
 
-        setUpButton(beginner, Difficulty.BEGINNER);
-        setUpButton(intermediate, Difficulty.INTERMEDIATE);
-        setUpButton(advanced, Difficulty.ADVANCED);
-        //setUpButton(master, Difficulty.MASTER);
+        // Make text blink
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        //You can manage the time of the blink with this parameter
+        //Higher = slower blink rate
+        anim.setDuration(400);
+        anim.setRepeatMode(Animation.RESTART);
+        anim.setRepeatCount(15);
+        selectBlindness.startAnimation(anim);
+
+        blind = (Button) view.findViewById(R.id.beginner);
+        impaired = (Button) view.findViewById(R.id.intermediate);
+        twentyTwenty = (Button) view.findViewById(R.id.advanced);
+
+        setUpButton(blind, Difficulty.BLIND);
+        setUpButton(impaired, Difficulty.IMPAIRED);
+        setUpButton(twentyTwenty, Difficulty.TWENTY_TWENTY);
 
         return view;
     }
